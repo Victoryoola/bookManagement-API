@@ -5,11 +5,14 @@ A simple REST API for managing books using Node.js, Express and MongoDB. This pr
 - Add a new book
 - Retrieve all added books
 - Retrieve a book by an id
+- Register a new User
+- Login an already existing user
 - Update details of a book
 - Delete a book
 - MongoDB for database
 
 # Tech Stack
+- JWT
 - Node.js
 - Express.js
 - MongoDB Atlas
@@ -22,11 +25,15 @@ A simple REST API for managing books using Node.js, Express and MongoDB. This pr
 - controllers/
     - book.js
 - middleware/
+    - auth.js
     - errorHandler.js
     - logger.js
 - models/
     - book.js
+    - user.js
 - routes/
+    - authRoute.js
+    - bookRoutes.js
     - book.js
 - server.js
 - package.json

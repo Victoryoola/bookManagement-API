@@ -1,5 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../middleware/auth');
+
+// protect all book routes - user must be authenticated
+router.use(auth);
 
 const {
     getBooks,

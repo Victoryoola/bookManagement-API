@@ -3,13 +3,13 @@ const Book = require('../models/book');
 exports.getBooks = async (req, res, next) => {
   try {
     const { author, page = 1, limit = 10 } = req.query;
-    const query = author ? { author: new RegExp(author, 'i') } : {};
+    const filter = author ? { author: new RegExp(author, 'i') } : {};
 
-    const books = await book.find(filter)
-        .skip((page - 1) * limit)
-        .limit(parseInt(limit));
-    
-    const total = await book.countDocuments(filter);
+    const books = await Book.find(filter)
+      .skip((page - 1) * limit)
+      .limit(parseInt(limit));
+
+    const total = await Book.countDocuments(filter);
 
     res.status(200).json({
       success: true,
@@ -17,7 +17,7 @@ exports.getBooks = async (req, res, next) => {
       total,
       page: parseInt(page),
       totalPages: Math.ceil(total / limit),
-      data: books
+      data: books,
     });
   } catch (error) {
     next(error);
@@ -26,7 +26,7 @@ exports.getBooks = async (req, res, next) => {
 
 exports.getBookById = async (req, res, next) => {
   try {
-    const bookItem = await book.findById(req.params.id);
+    const bookItem = await Book.findById(req.params.id);
     if (!bookItem) {
       return res.status(404).json({ success: false, message: 'Book not found' });
     }
@@ -37,35 +37,34 @@ exports.getBookById = async (req, res, next) => {
 };
 
 exports.createBook = async (req, res, next) => {
-    try {
-    const { title, author, year, genre   } = req.body;
-    const newBook = await Book.create ({ title, author, year, genre  });
+  try {
+    const { title, author, year, genre } = req.body;
+    const newBook = await Book.create({ title, author, year, genre });
     res.status(201).json({ success: true, data: newBook });
   } catch (error) {
     next(error);
-  } 
+  }
 };
 
 exports.updateBook = async (req, res, next) => {
   try {
-    const book= await book.findByIdAndUpdate(req.params.id, req.body, { 
-      new: true, 
+    const updated = await Book.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
       runValidators: true,
     });
-    if (!book) {
+    if (!updated) {
       return res.status(404).json({ success: false, message: 'Book not found' });
     }
-    res.status(200).json({ success: true, data: book });
-  }
-  catch (error) {
+    res.status(200).json({ success: true, data: updated });
+  } catch (error) {
     next(error);
   }
 };
 
 exports.deleteBook = async (req, res, next) => {
   try {
-    const bookItem = await book.findByIdAndDelete(req.params.id);
-    if (!book) {
+    const deleted = await Book.findByIdAndDelete(req.params.id);
+    if (!deleted) {
       return res.status(404).json({ success: false, message: 'Book not found' });
     }
     res.status(200).json({ success: true, message: 'Book deleted successfully' });
@@ -73,4 +72,3 @@ exports.deleteBook = async (req, res, next) => {
     next(error);
   }
 };
-    
