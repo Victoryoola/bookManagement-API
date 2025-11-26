@@ -73,5 +73,8 @@ Requirements: Node.js (>=16) and npm.
 6. User Login
     http://localhost:5000/api/auth/login
 
+# Deployed link
+    https://bookmanagement-api-x79j.onrender.com
+
 # Testing
 - Postman
