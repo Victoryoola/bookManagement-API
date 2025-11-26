@@ -1,7 +1,9 @@
 # Book Management API
+
 A simple REST API for managing books using Node.js, Express and MongoDB. This project features CRUD functionality for books
 
 # Features
+
 - Add a new book
 - Retrieve all added books
 - Retrieve a book by an id
@@ -12,6 +14,7 @@ A simple REST API for managing books using Node.js, Express and MongoDB. This pr
 - MongoDB for database
 
 # Tech Stack
+
 - JWT
 - Node.js
 - Express.js
@@ -20,6 +23,7 @@ A simple REST API for managing books using Node.js, Express and MongoDB. This pr
 - Nodemon
 
 # Project Folder
+
 - config/
     - db.js
 - controllers/
@@ -40,6 +44,7 @@ A simple REST API for managing books using Node.js, Express and MongoDB. This pr
 - package-lock.json
 
 # Quick Start
+
 Requirements: Node.js (>=16) and npm.
 
 1. Install dependencies
@@ -51,8 +56,8 @@ Requirements: Node.js (>=16) and npm.
 3. Open http://localhost:5000
 
 4. Create a .env file
-    MONGO_URI=your_mongo_connection_url
-    PORT=500
+- MONGO_URI=your_mongo_connection_url
+- PORT=500
 
 # API Endpoints
 1. Get all books
@@ -74,7 +79,7 @@ Requirements: Node.js (>=16) and npm.
     http://localhost:5000/api/auth/login
 
 # Deployed link
-    https://bookmanagement-api-x79j.onrender.com
+https://bookmanagement-api-x79j.onrender.com
 
 # Testing
 - Postman
