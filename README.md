@@ -67,5 +67,11 @@ Requirements: Node.js (>=16) and npm.
 4. Delete a book
     http://localhost:5000/api/books/:id
 
+5. Register User
+    http://localhost:5000/api/auth/register
+
+6. User Login
+    http://localhost:5000/api/auth/login
+
 # Testing
 - Postman
